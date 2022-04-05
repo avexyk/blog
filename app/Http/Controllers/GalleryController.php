@@ -7,14 +7,18 @@ use Illuminate\Http\Request;
 class GalleryController extends Controller
 {
     public function index () {
-        return "Gallery page";
+        return view('gallery.index');
     }
 
     public function create () {
-        return 'Create page'; 
+        return view('gallery.create'); 
     }
 
     public function show ($foto) {
-        return "Photo title: $foto";
+
+        // Método compact
+        // compact('foto'); // ['foto' => $foto]
+
+        return view('gallery.show', ['foto' => $foto]);
     }
 }
