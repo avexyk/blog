@@ -2,23 +2,27 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Gallery;
 use Illuminate\Http\Request;
 
 class GalleryController extends Controller
 {
     public function index () {
-        return view('gallery.index');
+        $galleries = Gallery::paginate();
+
+        return view('galleries.index', ['galleries' => $galleries]);
     }
 
     public function create () {
-        return view('gallery.create'); 
+        return view('galleries.create'); 
     }
 
-    public function show ($foto) {
+    public function show ($id) {
 
         // Método compact
         // compact('foto'); // ['foto' => $foto]
+        $photo = Gallery::find($id);
 
-        return view('gallery.show', ['foto' => $foto]);
+        return view('galleries.show', ['photo' => $photo]);
     }
 }

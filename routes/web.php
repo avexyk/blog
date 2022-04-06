@@ -24,9 +24,9 @@ Route::get('/', HomeController::class);
 
 // Grupo
 Route::controller(GalleryController::class)->group(function () {
-    Route::get('gallery', 'index');
-    Route::get('gallery/create', 'create');
-    Route::get('gallery/{foto}', 'show');
+    Route::get('galleries', 'index')->name('galleries.index');
+    Route::get('galleries/create', 'create')->name('galleries.create');
+    Route::get('galleries/{id}', 'show')->name('galleries.show');
 });
 
 // Route::get('gallery/{foto}/{category?}', function ($foto, $category = null) {
