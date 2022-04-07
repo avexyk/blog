@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Gallery;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreGallery;
 
 class GalleryController extends Controller
 {
@@ -17,14 +18,8 @@ class GalleryController extends Controller
         return view('galleries.create'); 
     }
 
-    public function store (Request $request) {
+    public function store (StoreGallery $request) {
         // return $request->all();
-
-        $request->validate([
-            'name' => 'required|max:10',
-            'description' => 'required|min:10',
-            'category' => 'required'
-        ]);
 
         $gallery = new Gallery();
 
