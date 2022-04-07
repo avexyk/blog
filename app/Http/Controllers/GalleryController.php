@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class GalleryController extends Controller
 {
     public function index () {
-        $galleries = Gallery::paginate();
+        $galleries = Gallery::orderBy('id', 'desc')->paginate();
 
         return view('galleries.index', ['galleries' => $galleries]);
     }
@@ -17,12 +17,40 @@ class GalleryController extends Controller
         return view('galleries.create'); 
     }
 
-    public function show ($id) {
+    public function store (Request $request) {
+        // return $request->all();
+        $gallery = new Gallery();
+
+        $gallery->name = $request->name;
+        $gallery->description = $request->description;
+        $gallery->category = $request->category;
+
+        $gallery->save();
+
+        return redirect()->route('galleries.show', $gallery->id);
+    }
+
+    public function show (Gallery $photo) {
 
         // Método compact
         // compact('foto'); // ['foto' => $foto]
-        $photo = Gallery::find($id);
+        // $photo = Gallery::find($id);
 
         return view('galleries.show', ['photo' => $photo]);
+    }
+
+    public function edit (Gallery $photo) {
+        // $photo = Gallery::find($id);
+        // return $photo;
+        return view('galleries.edit', ['photo' => $photo]);
+    }
+
+    public function update (Request $request, Gallery $photo) {
+        $photo->name = $request->name;
+        $photo->description = $request->description;
+        $photo->category = $request->category;
+
+        $photo->save();
+        return redirect()->route('galleries.show', $photo->id);
     }
 }

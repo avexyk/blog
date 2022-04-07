@@ -26,7 +26,10 @@ Route::get('/', HomeController::class);
 Route::controller(GalleryController::class)->group(function () {
     Route::get('galleries', 'index')->name('galleries.index');
     Route::get('galleries/create', 'create')->name('galleries.create');
-    Route::get('galleries/{id}', 'show')->name('galleries.show');
+    Route::post('galleries', 'store')->name('galleries.store');
+    Route::get('galleries/{photo}', 'show')->name('galleries.show');
+    Route::get('galleries/{photo}/edit', 'edit')->name('galleries.edit');
+    Route::put('galleries/{photo}', 'update')->name('galleries.update');
 });
 
 // Route::get('gallery/{foto}/{category?}', function ($foto, $category = null) {
