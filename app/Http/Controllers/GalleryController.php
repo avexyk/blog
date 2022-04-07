@@ -21,13 +21,21 @@ class GalleryController extends Controller
     public function store (StoreGallery $request) {
         // return $request->all();
 
-        $gallery = new Gallery();
+        // $gallery = new Gallery();
 
-        $gallery->name = $request->name;
-        $gallery->description = $request->description;
-        $gallery->category = $request->category;
+        // $gallery->name = $request->name;
+        // $gallery->description = $request->description;
+        // $gallery->category = $request->category;
 
-        $gallery->save();
+        // $gallery->save();
+
+        // Asignación masiva para gran cantidad de campos en un formulario
+        // $gallery = Gallery::create([
+        //     'name' => $request->name,
+        //     'description' => $request->description,
+        //     'category' => $request->category
+        // ]);
+        $gallery = Gallery::create( $request->all() );
 
         return redirect()->route('galleries.show', $gallery->id);
     }
@@ -56,11 +64,13 @@ class GalleryController extends Controller
         ]);
 
 
-        $photo->name = $request->name;
-        $photo->description = $request->description;
-        $photo->category = $request->category;
+        // $photo->name = $request->name;
+        // $photo->description = $request->description;
+        // $photo->category = $request->category;
 
-        $photo->save();
+        // $photo->save();
+        $photo->update( $request->all() );
+
         return redirect()->route('galleries.show', $photo->id);
     }
 }

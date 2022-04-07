@@ -10,5 +10,14 @@ class Gallery extends Model
     use HasFactory;
     protected $table = "galleries";
 
-    
+    // Para asignación masiva
+    // protected $fillable = [
+    //     'name',
+    //     'description',
+    //     'category'
+    // ];
+
+    protected $guarded = [
+        'status'
+    ];
 }
