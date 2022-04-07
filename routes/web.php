@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\GalleryController;
 
+use App\Mail\ContactanosMailable;
+use Illuminate\Support\Facades\Mail;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,7 +18,7 @@ use App\Http\Controllers\GalleryController;
 |
 */
 
-Route::get('/', HomeController::class);
+Route::get('/', HomeController::class)->name('home');
 
 // Individual
 // Route::get('gallery', [GalleryController::class, 'index']);
@@ -46,3 +49,13 @@ Route::resource('galleries', GalleryController::class);
 
 // Cambiando el nombre de las rutas en la url sin alterar internamente
 // Route::resource('photos', GalleryController::class)->parameters(['photos' => 'gallery'])->names('galleries');
+
+Route::view('nosotros', 'nosotros')->name('nosotros');
+
+Route::get('contactanos', function () {
+  $correo = new ContactanosMailable;
+
+  Mail::to('avexyk@gmail.com')->send($correo);
+
+  return "Mensaje enviado";
+});
