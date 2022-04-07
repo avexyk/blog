@@ -73,4 +73,10 @@ class GalleryController extends Controller
 
         return redirect()->route('galleries.show', $photo->id);
     }
+
+    public function destroy (Gallery $photo) {
+        $photo->delete();
+        return redirect()->route('galleries.index');
+    }
+
 }

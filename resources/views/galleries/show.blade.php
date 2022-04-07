@@ -10,4 +10,10 @@
   <a href="{{ route('galleries.edit', $photo->id ) }}">Editar foto</a>
   <p><strong>Categoría: </strong>{{ $photo->category }}</p>
   <p>{{ $photo->description }}</p>
+
+  <form action="{{ route('galleries.destroy', $photo) }}" method="POST">
+    @csrf
+    @method('delete')
+    <button type="submit">Eliminar</button>
+  </form>
 @endsection

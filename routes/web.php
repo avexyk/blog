@@ -30,6 +30,7 @@ Route::controller(GalleryController::class)->group(function () {
     Route::get('galleries/{photo}', 'show')->name('galleries.show');
     Route::get('galleries/{photo}/edit', 'edit')->name('galleries.edit');
     Route::put('galleries/{photo}', 'update')->name('galleries.update');
+    Route::delete('galleries/{photo}', 'destroy')->name('galleries.destroy');
 });
 
 // Route::get('gallery/{foto}/{category?}', function ($foto, $category = null) {
