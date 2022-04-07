@@ -37,7 +37,7 @@ class GalleryController extends Controller
         // ]);
         $gallery = Gallery::create( $request->all() );
 
-        return redirect()->route('galleries.show', $gallery->id);
+        return redirect()->route('galleries.show', $gallery);
     }
 
     public function show (Gallery $gallery) {
@@ -71,7 +71,7 @@ class GalleryController extends Controller
         // $photo->save();
         $gallery->update( $request->all() );
 
-        return redirect()->route('galleries.show', $gallery->id);
+        return redirect()->route('galleries.show', $gallery);
     }
 
     public function destroy (Gallery $gallery) {

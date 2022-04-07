@@ -7,7 +7,7 @@
   <h1>Título de la foto: {{ $gallery->name }}</h1>
   <a href="{{ route('galleries.index') }}">Regresar</a>
   <br>
-  <a href="{{ route('galleries.edit', $gallery->id ) }}">Editar foto</a>
+  <a href="{{ route('galleries.edit', $gallery) }}">Editar foto</a>
   <p><strong>Categoría: </strong>{{ $gallery->category }}</p>
   <p>{{ $gallery->description }}</p>
 

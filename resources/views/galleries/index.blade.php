@@ -9,7 +9,7 @@
   <ul>
     @foreach ($galleries as $gallery)
         <li>
-          <a href="{{ route('galleries.show', $gallery->id) }}">{{ $gallery->name }}</a>
+          <a href="{{ route('galleries.show', $gallery) }}">{{ $gallery->name }}</a>
         </li>
     @endforeach
   </ul>
