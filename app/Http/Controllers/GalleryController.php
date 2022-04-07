@@ -19,6 +19,13 @@ class GalleryController extends Controller
 
     public function store (Request $request) {
         // return $request->all();
+
+        $request->validate([
+            'name' => 'required|max:10',
+            'description' => 'required|min:10',
+            'category' => 'required'
+        ]);
+
         $gallery = new Gallery();
 
         $gallery->name = $request->name;
@@ -46,6 +53,14 @@ class GalleryController extends Controller
     }
 
     public function update (Request $request, Gallery $photo) {
+
+        $request->validate([
+            'name' => 'required|max:10',
+            'description' => 'required|min:10',
+            'category' => 'required'
+        ]);
+
+
         $photo->name = $request->name;
         $photo->description = $request->description;
         $photo->category = $request->category;

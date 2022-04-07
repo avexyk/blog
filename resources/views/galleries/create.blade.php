@@ -10,16 +10,34 @@
     @csrf
 
     <label for="name">Nombre:</label><br>
-    <input type="text" name="name" id="name">
+    <input type="text" name="name" id="name" value="{{ old('name') }}">
     <br>
+
+    @error('name')
+        <small>*{{ $message }}</small>
+        <br>
+        <br>
+    @enderror
 
     <label for="description">Descripción:</label><br>
-    <textarea name="description" id="description" cols="30" rows="5"></textarea>
+    <textarea name="description" id="description" cols="30" rows="5">{{ old('description') }}</textarea>
     <br>
 
-    <label for="description">Categoría:</label><br>
-    <input type="text" name="category" id="category">
+    @error('description')
+        <small>*{{ $message }}</small>
+        <br>
+        <br>
+    @enderror
+
+    <label for="category">Categoría:</label><br>
+    <input type="text" name="category" id="category" value="{{ old('category') }}">
     <br>
+
+    @error('category')
+        <small>*{{ $message }}</small>
+        <br>
+        <br>
+    @enderror
 
     <button type="submit">Enviar formulario</button>
   </form>
