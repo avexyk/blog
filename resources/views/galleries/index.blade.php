@@ -7,9 +7,9 @@
   <h1>Página de galería</h1>
   <a href="{{ route('galleries.create') }}">Crear foto</a>
   <ul>
-    @foreach ($galleries as $photo)
+    @foreach ($galleries as $gallery)
         <li>
-          <a href="{{ route('galleries.show', $photo->id) }}">{{ $photo->name }}</a>
+          <a href="{{ route('galleries.show', $gallery->id) }}">{{ $gallery->name }}</a>
         </li>
     @endforeach
   </ul>

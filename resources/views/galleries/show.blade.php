@@ -1,17 +1,17 @@
 
 @extends('layouts.plantilla')
 
-@section('title', 'Foto '.$photo->name)
+@section('title', 'Foto '.$gallery->name)
 
 @section('content')
-  <h1>Título de la foto: {{ $photo->name }}</h1>
+  <h1>Título de la foto: {{ $gallery->name }}</h1>
   <a href="{{ route('galleries.index') }}">Regresar</a>
   <br>
-  <a href="{{ route('galleries.edit', $photo->id ) }}">Editar foto</a>
-  <p><strong>Categoría: </strong>{{ $photo->category }}</p>
-  <p>{{ $photo->description }}</p>
+  <a href="{{ route('galleries.edit', $gallery->id ) }}">Editar foto</a>
+  <p><strong>Categoría: </strong>{{ $gallery->category }}</p>
+  <p>{{ $gallery->description }}</p>
 
-  <form action="{{ route('galleries.destroy', $photo) }}" method="POST">
+  <form action="{{ route('galleries.destroy', $gallery) }}" method="POST">
     @csrf
     @method('delete')
     <button type="submit">Eliminar</button>

@@ -5,13 +5,13 @@
 
 @section('content')
   <h1>Página de edición</h1>
-  <form action="{{ route('galleries.update', $photo) }}" method="POST">
+  <form action="{{ route('galleries.update', $gallery) }}" method="POST">
 
     @csrf
     @method('put')
 
     <label for="name">Nombre:</label><br>
-    <input type="text" name="name" id="name" value="{{ old('name', $photo->name) }}">
+    <input type="text" name="name" id="name" value="{{ old('name', $gallery->name) }}">
     <br>
 
     @error('name')
@@ -21,7 +21,7 @@
     @enderror
 
     <label for="description">Descripción:</label><br>
-    <textarea name="description" id="description" cols="30" rows="5">{{ old('description', $photo->description) }}</textarea>
+    <textarea name="description" id="description" cols="30" rows="5">{{ old('description', $gallery->description) }}</textarea>
     <br>
 
     @error('description')
@@ -31,7 +31,7 @@
     @enderror
 
     <label for="category">Categoría:</label><br>
-    <input type="text" name="category" id="category" value="{{ old('category', $photo->category) }}">
+    <input type="text" name="category" id="category" value="{{ old('category', $gallery->category) }}">
     <br>
 
     @error('category')

@@ -40,22 +40,22 @@ class GalleryController extends Controller
         return redirect()->route('galleries.show', $gallery->id);
     }
 
-    public function show (Gallery $photo) {
+    public function show (Gallery $gallery) {
 
         // Método compact
         // compact('foto'); // ['foto' => $foto]
         // $photo = Gallery::find($id);
 
-        return view('galleries.show', ['photo' => $photo]);
+        return view('galleries.show', ['gallery' => $gallery]);
     }
 
-    public function edit (Gallery $photo) {
+    public function edit (Gallery $gallery) {
         // $photo = Gallery::find($id);
         // return $photo;
-        return view('galleries.edit', ['photo' => $photo]);
+        return view('galleries.edit', ['gallery' => $gallery]);
     }
 
-    public function update (Request $request, Gallery $photo) {
+    public function update (Request $request, Gallery $gallery) {
 
         $request->validate([
             'name' => 'required|max:10',
@@ -69,13 +69,13 @@ class GalleryController extends Controller
         // $photo->category = $request->category;
 
         // $photo->save();
-        $photo->update( $request->all() );
+        $gallery->update( $request->all() );
 
-        return redirect()->route('galleries.show', $photo->id);
+        return redirect()->route('galleries.show', $gallery->id);
     }
 
-    public function destroy (Gallery $photo) {
-        $photo->delete();
+    public function destroy (Gallery $gallery) {
+        $gallery->delete();
         return redirect()->route('galleries.index');
     }
 
