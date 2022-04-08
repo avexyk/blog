@@ -3,9 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\GalleryController;
-
-use App\Mail\ContactanosMailable;
-use Illuminate\Support\Facades\Mail;
+use App\Http\Controllers\ContactanosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,10 +50,5 @@ Route::resource('galleries', GalleryController::class);
 
 Route::view('nosotros', 'nosotros')->name('nosotros');
 
-Route::get('contactanos', function () {
-  $correo = new ContactanosMailable;
-
-  Mail::to('avexyk@gmail.com')->send($correo);
-
-  return "Mensaje enviado";
-});
+Route::get('contactanos', [ContactanosController::class, 'index'])->name('contactanos.index');
+Route::post('contactanos', [ContactanosController::class, 'store'])->name('contactanos.store');
